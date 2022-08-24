@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "H+N66kzx7Q6gj5e9mmivSJfkHXMpg16VhkP7QwoGfn6pysiEyJbMvtB1IJp/JFENpwp5dQ4R0H/Cq+3H+r+zcw==",
+  "dgSpecHash": "aeVUGMA9R6c479+WfWHVHlYyTAQ+1ph3qDFr3NQs3gH+YjHlT6Ubt4fQVIRWiVLxMrcqLNusRhlPpa6UiNhuqw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\oliv827p\\source\\repos\\ScubaAPI\\ScubaAPI\\ScubaAPI.csproj",
+  "projectFilePath": "C:\\Users\\oliv827p\\source\\praktisk-web\\ScubaAPI\\ScubaAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\oliv827p\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\oliv827p\\.nuget\\packages\\microsoft.data.sqlite.core\\6.0.7\\microsoft.data.sqlite.core.6.0.7.nupkg.sha512",

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\oliv827p\\source\\repos\\ScubaAPI\\ScubaAPI\\ScubaAPI.csproj": {}
+    "C:\\Users\\oliv827p\\source\\praktisk-web\\ScubaAPI\\ScubaAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\oliv827p\\source\\repos\\ScubaAPI\\ScubaAPI\\ScubaAPI.csproj": {
+    "C:\\Users\\oliv827p\\source\\praktisk-web\\ScubaAPI\\ScubaAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\oliv827p\\source\\repos\\ScubaAPI\\ScubaAPI\\ScubaAPI.csproj",
+        "projectUniqueName": "C:\\Users\\oliv827p\\source\\praktisk-web\\ScubaAPI\\ScubaAPI.csproj",
         "projectName": "ScubaAPI",
-        "projectPath": "C:\\Users\\oliv827p\\source\\repos\\ScubaAPI\\ScubaAPI\\ScubaAPI.csproj",
+        "projectPath": "C:\\Users\\oliv827p\\source\\praktisk-web\\ScubaAPI\\ScubaAPI.csproj",
         "packagesPath": "C:\\Users\\oliv827p\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\oliv827p\\source\\repos\\ScubaAPI\\ScubaAPI\\obj\\",
+        "outputPath": "C:\\Users\\oliv827p\\source\\praktisk-web\\ScubaAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
