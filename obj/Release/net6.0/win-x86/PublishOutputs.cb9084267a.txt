@@ -1,0 +1,6 @@
+C:\Users\oliv827p\source\repos\ScubaAPI\ScubaAPI\obj\Release\net6.0\win-x86\PubTmp\Out\appsettings.Development.json
+C:\Users\oliv827p\source\repos\ScubaAPI\ScubaAPI\obj\Release\net6.0\win-x86\PubTmp\Out\appsettings.json
+C:\Users\oliv827p\source\repos\ScubaAPI\ScubaAPI\obj\Release\net6.0\win-x86\PubTmp\Out\ScubaAPI.pdb
+C:\Users\oliv827p\source\repos\ScubaAPI\ScubaAPI\obj\Release\net6.0\win-x86\PubTmp\Out\aspnetcorev2_inprocess.dll
+C:\Users\oliv827p\source\repos\ScubaAPI\ScubaAPI\obj\Release\net6.0\win-x86\PubTmp\Out\e_sqlite3.dll
+C:\Users\oliv827p\source\repos\ScubaAPI\ScubaAPI\obj\Release\net6.0\win-x86\PubTmp\Out\ScubaAPI.exe

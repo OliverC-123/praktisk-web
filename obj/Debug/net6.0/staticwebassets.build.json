@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "Hash": "hJJ9iI7I8L/Y6H0V9BDaynUH/zHeb1XE3DieSNAxkdw=",
+  "Source": "ScubaAPI",
+  "BasePath": "_content/ScubaAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "ScubaAPI\\wwwroot",
+      "Source": "ScubaAPI",
+      "ContentRoot": "C:\\Users\\oliv827p\\source\\repos\\ScubaAPI\\ScubaAPI\\wwwroot\\",
+      "BasePath": "_content/ScubaAPI",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\oliv827p\\source\\repos\\ScubaAPI\\ScubaAPI\\wwwroot\\IMG_20180826_130748 1.jpg",
+      "SourceId": "ScubaAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\oliv827p\\source\\repos\\ScubaAPI\\ScubaAPI\\wwwroot\\",
+      "BasePath": "_content/ScubaAPI",
+      "RelativePath": "IMG_20180826_130748 1.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\IMG_20180826_130748 1.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\oliv827p\\source\\repos\\ScubaAPI\\ScubaAPI\\wwwroot\\IMG_20190726_091546.jpg",
+      "SourceId": "ScubaAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\oliv827p\\source\\repos\\ScubaAPI\\ScubaAPI\\wwwroot\\",
+      "BasePath": "_content/ScubaAPI",
+      "RelativePath": "IMG_20190726_091546.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\IMG_20190726_091546.jpg"
+    }
+  ]
+}
