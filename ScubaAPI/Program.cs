@@ -34,6 +34,10 @@ app.UseCors(options =>
            .AllowAnyOrigin();
 });
 
+app.MapGet("/", () =>
+{
+    return "API working if you see this page =)";
+});
 // GET
 app.MapGet("/api/sted", async (StedContext db) => await db.Steder.Include(e => e.Type).ToListAsync());
 app.MapGet("/api/tur", async (StedContext db) => await db.Turer.Include(e => e.Sted).ToListAsync());
