@@ -4,56 +4,51 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackAsTool>True</PackAsTool>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>embedded</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>embedded</DebugType>
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="bin\Debug\net6.0\appsettings.Development.json" />
-    <Content Include="bin\Debug\net6.0\appsettings.json" />
-    <Content Include="bin\Debug\net6.0\ScubaAPI.deps.json" />
-    <Content Include="bin\Debug\net6.0\ScubaAPI.runtimeconfig.json" />
-    <Content Include="bin\Debug\net6.0\ScubaAPI.staticwebassets.runtime.json" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="bin\Debug\net6.0\Humanizer.dll" />
-    <None Include="bin\Debug\net6.0\Microsoft.Data.Sqlite.dll" />
-    <None Include="bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll" />
-    <None Include="bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll" />
-    <None Include="bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll" />
-    <None Include="bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll" />
-    <None Include="bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Sqlite.dll" />
-    <None Include="bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll" />
-    <None Include="bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll" />
-    <None Include="bin\Debug\net6.0\runtimes\alpine-x64\native\libe_sqlite3.so" />
-    <None Include="bin\Debug\net6.0\runtimes\linux-arm64\native\libe_sqlite3.so" />
-    <None Include="bin\Debug\net6.0\runtimes\linux-armel\native\libe_sqlite3.so" />
-    <None Include="bin\Debug\net6.0\runtimes\linux-arm\native\libe_sqlite3.so" />
-    <None Include="bin\Debug\net6.0\runtimes\linux-mips64\native\libe_sqlite3.so" />
-    <None Include="bin\Debug\net6.0\runtimes\linux-musl-x64\native\libe_sqlite3.so" />
-    <None Include="bin\Debug\net6.0\runtimes\linux-s390x\native\libe_sqlite3.so" />
-    <None Include="bin\Debug\net6.0\runtimes\linux-x64\native\libe_sqlite3.so" />
-    <None Include="bin\Debug\net6.0\runtimes\linux-x86\native\libe_sqlite3.so" />
-    <None Include="bin\Debug\net6.0\runtimes\osx-arm64\native\libe_sqlite3.dylib" />
-    <None Include="bin\Debug\net6.0\runtimes\osx-x64\native\libe_sqlite3.dylib" />
-    <None Include="bin\Debug\net6.0\runtimes\win-arm64\native\e_sqlite3.dll" />
-    <None Include="bin\Debug\net6.0\runtimes\win-arm\native\e_sqlite3.dll" />
-    <None Include="bin\Debug\net6.0\runtimes\win-x64\native\e_sqlite3.dll" />
-    <None Include="bin\Debug\net6.0\runtimes\win-x86\native\e_sqlite3.dll" />
-    <None Include="bin\Debug\net6.0\ScubaAPI.dll" />
-    <None Include="bin\Debug\net6.0\ScubaAPI.exe" />
-    <None Include="bin\Debug\net6.0\ScubaAPI.pdb" />
-    <None Include="bin\Debug\net6.0\SQLitePCLRaw.batteries_v2.dll" />
-    <None Include="bin\Debug\net6.0\SQLitePCLRaw.core.dll" />
-    <None Include="bin\Debug\net6.0\SQLitePCLRaw.provider.e_sqlite3.dll" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.7" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.7" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.7">
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.8">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="6.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\3cf0c2d6-6e18-4230-a34e-1a471a646f05.jpg" />
+    <None Include="wwwroot\bly-vaegtsystemer-blybaelter.jpg" />
+    <None Include="wwwroot\BoejerOgSMB.jpg" />
+    <None Include="wwwroot\Boejler.jpg" />
+    <None Include="wwwroot\cressi-gamma-snorkel_black.jpg" />
+    <None Include="wwwroot\DragterOgTilbehoer.jpg" />
+    <None Include="wwwroot\DrybagsOgTasker.jpg" />
+    <None Include="wwwroot\Dykkercompute.jpg" />
+    <None Include="wwwroot\Dykkerflasker.png" />
+    <None Include="wwwroot\Dykkerlygter.jpg" />
+    <None Include="wwwroot\FangstnetOgStringers.jpg" />
+    <None Include="wwwroot\Finner.jpg" />
+    <None Include="wwwroot\Hardware.jpg" />
+    <None Include="wwwroot\Harpuner.jpg" />
+    <None Include="wwwroot\HjulOgSpoler.jpg" />
+    <None Include="wwwroot\Instromenter.jpg" />
+    <None Include="wwwroot\Knive.jpg" />
+    <None Include="wwwroot\Masker.jpg" />
+    <None Include="wwwroot\noimage.jpg" />
+    <None Include="wwwroot\Regulator.jpg" />
+    <None Include="wwwroot\Scooter.jpg" />
+    <None Include="wwwroot\snorkelsaet-cressi-matrix-gamma.jpg" />
+    <None Include="wwwroot\Vingesystemer.jpg" />
   </ItemGroup>
 
 </Project>

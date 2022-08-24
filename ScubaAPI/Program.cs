@@ -7,32 +7,44 @@ using Tur = ScubaAPI.Models.Tur;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Set Content Root
+//Set content Root
+
 builder.Host.UseContentRoot(Directory.GetCurrentDirectory());
+
 // Add services to the container.
 
-builder.Services.AddDbContext<StedContext>(options => options.UseSqlite(
-    builder.Configuration.GetConnectionString("Scuba")
-    ));
+// SQL LITE
+//builder.Services.AddDbContext<SubaContext>(options => options.UseSqlite(
+//    builder.Configuration.GetConnectionString("SubaTrip")
+//));
+
+// MYSQL
+builder.Services.AddDbContext<StedContext>(options =>
+{
+    options.UseMySql(builder.Configuration.GetConnectionString("ScubaDatabase"),
+    Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.23-mysql"));
+});
+
 builder.Services.AddCors();
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+
 if (!app.Environment.IsDevelopment())
 {
     app.UseHttpsRedirection();
 }
-// Use Static Files
-app.UseStaticFiles();
+// Cors
 
- // CORS
 app.UseCors(options =>
 {
     options.AllowAnyHeader()
            .AllowAnyMethod()
            .AllowAnyOrigin();
 });
+
+//Requests
 
 app.MapGet("/", () =>
 {
@@ -55,9 +67,9 @@ app.MapGet("/api/kontakt/{id}", async (StedContext db) => await db.Steder.ToList
 app.MapGet("/api/type/{id}", async (StedContext db, int id) => await db.Steder.Where(e => e.TypeID == id).ToListAsync());
 
 // POST
-app.MapPost("/api/sted", async (StedContext db, Sted steder) => 
+app.MapPost("/api/sted", async (StedContext db, Sted steder) =>
 {
-  
+
     await db.Steder.AddAsync(steder);
     await db.SaveChangesAsync();
 
