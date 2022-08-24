@@ -10,7 +10,7 @@ using WebAPI.Models;
 namespace WebAPI.Migrations
 {
     [DbContext(typeof(SubaContext))]
-    [Migration("20220823072459_init")]
+    [Migration("20220824084751_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -133,8 +133,8 @@ namespace WebAPI.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("longtext");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(65,30)");
+                    b.Property<string>("Price")
+                        .HasColumnType("longtext");
 
                     b.HasKey("ID");
 
