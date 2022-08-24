@@ -1,6 +1,9 @@
 using Microsoft.EntityFrameworkCore;
-using WebAPI;
-using WebAPI.Models;
+using ScubaAPI.Models;
+using ScubaAPI;
+using Type = ScubaAPI.Models.Type;
+using Sted = ScubaAPI.Models.Sted;
+using Tur = ScubaAPI.Models.Tur;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,7 +19,7 @@ builder.Host.UseContentRoot(Directory.GetCurrentDirectory());
 //));
 
 // MYSQL
-builder.Services.AddDbContext<SubaContext>(options =>
+builder.Services.AddDbContext<StedContext>(options =>
 {
     options.UseMySql(builder.Configuration.GetConnectionString("ScubaDatabase"),
     Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.23-mysql"));
@@ -47,202 +50,204 @@ app.MapGet("/", () =>
 {
     return "API working if you see this page =)";
 });
+// GET
+app.MapGet("/api/sted", async (StedContext db) => await db.Steder.ToListAsync());
+app.MapGet("/api/tur", async (StedContext db) => await db.Turer.ToListAsync());
+app.MapGet("/api/img", async (StedContext db) => await db.Images.ToListAsync());
+app.MapGet("/api/signup", async (StedContext db) => await db.Signup.ToListAsync());
+app.MapGet("/api/kontakt", async (StedContext db) => await db.Kontakt.ToListAsync());
+app.MapGet("/api/type", async (StedContext db) => await db.Type.ToListAsync());
 
-// db.[databaseName].
+// GET by ID
+app.MapGet("/api/sted/{id}", async (StedContext db, int id) => await db.Steder.FindAsync(id));
+app.MapGet("/api/tur/{id}", async (StedContext db, int id) => await db.Turer.FindAsync(id));
+app.MapGet("/api/img/{id}", async (StedContext db, int id) => await db.Images.FindAsync(id));
+app.MapGet("/api/signup/{id}", async (StedContext db, int id) => await db.Signup.FindAsync(id));
+app.MapGet("/api/kontakt/{id}", async (StedContext db, int id) => await db.Kontakt.FindAsync(id));
+app.MapGet("/api/type/{id}", async (StedContext db, int id) => await db.Type.FindAsync(id));
 
-app.MapGet("/api/contactinfo", async (SubaContext db) => await db.ContactInfo.ToListAsync());
-
-app.MapGet("/api/contactinfo/{id}", async (SubaContext db, int id) => await db.ContactInfo.FindAsync(id));
-
-app.MapGet("/api/tourinfo", async (SubaContext db) => await db.TourInfo.ToListAsync());
-
-app.MapGet("/api/tourinfo/{id}", async (SubaContext db, int id) => await db.TourInfo.FindAsync(id));
-
-app.MapGet("/api/products/", async (SubaContext db) => await db.Products.ToListAsync());
-
-app.MapGet("/api/products/{id}", async (SubaContext db, int id) => await db.Products.FindAsync(id));
-
-app.MapGet("/api/inputinfo/", async (SubaContext db) => await db.InputInfo.ToListAsync());
-
-app.MapGet("/api/inputinfo/{id}", async (SubaContext db, int id) => await db.InputInfo.FindAsync(id));
-
-app.MapGet("/api/gallery/", async (SubaContext db) => await db.Gallery.ToListAsync());
-
-app.MapGet("/api/gallery/{id}", async (SubaContext db, int id) => await db.Gallery.FindAsync(id));
-
-// Post Requests
-
-app.MapPost("/api/contactinfo", async (SubaContext db, ContactInfo contactinfo) =>
+// POST
+app.MapPost("/api/sted", async (StedContext db, Sted steder) =>
 {
-    await db.ContactInfo.AddAsync(contactinfo);
+
+    await db.Steder.AddAsync(steder);
     await db.SaveChangesAsync();
 
-    return Results.Ok(contactinfo);
+    return Results.Ok(steder.Id);
 });
-
-app.MapPost("/api/tourinfo", async (SubaContext db, TourInfo tourInfo) =>
+app.MapPost("/api/tur", async (StedContext db, Tur turer) =>
 {
-    await db.TourInfo.AddAsync(tourInfo);
+
+    await db.Turer.AddAsync(turer);
     await db.SaveChangesAsync();
 
-    return Results.Ok(tourInfo);
+    return Results.Ok(turer.Id);
 });
-
-app.MapPost("/api/inputinfo", async (SubaContext db, InputInfo inputinfo) =>
+app.MapPost("/api/img", async (StedContext db, IMG image) =>
 {
-    await db.InputInfo.AddAsync(inputinfo);
+    image.Image = Tools.ConvertBase64tofile(image.Image, builder.Environment.ContentRootPath + @"/wwwroot/");
+
+    await db.Images.AddAsync(image);
     await db.SaveChangesAsync();
 
-    return Results.Ok(inputinfo);
+    return Results.Ok(image.Id);
 });
-
-app.MapPost("/api/gallery", async (SubaContext db, Gallery gallery) =>
+app.MapPost("/api/singup", async (StedContext db, Tilmeld tilmeld) =>
 {
-    await db.Gallery.AddAsync(gallery);
+
+    await db.Signup.AddAsync(tilmeld);
     await db.SaveChangesAsync();
 
-    return Results.Ok(gallery);
+    return Results.Ok(tilmeld.Id);
 });
-
-app.MapPost("/api/products", async (SubaContext db, Products products) =>
+app.MapPost("/api/kontakt", async (StedContext db, Kontakt kontakt) =>
 {
-    products.Image = Tools.ConvertBase64ToFile(products.Image, builder.Environment.ContentRootPath + @"\wwwroot\");
 
-    await db.Products.AddAsync(products);
+    await db.Kontakt.AddAsync(kontakt);
     await db.SaveChangesAsync();
 
-    return Results.Ok(products);
+    return Results.Ok(kontakt.Id);
+});
+app.MapPost("/api/type", async (StedContext db, Type type) =>
+{
+
+    await db.Type.AddAsync(type);
+    await db.SaveChangesAsync();
+
+    return Results.Ok(type.Id);
 });
 
-// Delete Requests
-
-app.MapDelete("/api/contactinfo/{id}", async (SubaContext db, int id) =>
+// DELETE by ID
+app.MapDelete("/api/sted/{id}", async (StedContext db, int id) =>
 {
-    var item = await db.ContactInfo.FindAsync(id);
+    var item = await db.Steder.FindAsync(id);
     if (item == null) return Results.NotFound();
 
-    db.ContactInfo.Remove(item);
-
+    db.Steder.Remove(item);
     await db.SaveChangesAsync();
 
     return Results.NoContent();
 
 });
-
-app.MapDelete("/api/tourinfo/{id}", async (SubaContext db, int id) =>
+app.MapDelete("/api/tur/{id}", async (StedContext db, int id) =>
 {
-    var item = await db.TourInfo.FindAsync(id);
+    var item = await db.Turer.FindAsync(id);
     if (item == null) return Results.NotFound();
 
-    db.TourInfo.Remove(item);
-
+    db.Turer.Remove(item);
     await db.SaveChangesAsync();
 
     return Results.NoContent();
 
 });
-
-app.MapDelete("/api/products/{id}", async (SubaContext db, int id) =>
+app.MapDelete("/api/img/{id}", async (StedContext db, int id) =>
 {
-    var item = await db.Products.FindAsync(id);
+    var item = await db.Images.FindAsync(id);
     if (item == null) return Results.NotFound();
 
-    File.Delete(builder.Environment.ContentRootPath + @"\wwwroot\" + item.ID);
-    db.Products.Remove(item);
-
+    File.Delete(builder.Environment.ContentRootPath + @"/wwwroot/" + item.Image);
+    db.Images.Remove(item);
     await db.SaveChangesAsync();
 
     return Results.NoContent();
 
 });
-
-app.MapDelete("/api/inputinfo/{id}", async (SubaContext db, int id) =>
+app.MapDelete("/api/signup/{id}", async (StedContext db, int id) =>
 {
-    var item = await db.InputInfo.FindAsync(id);
+    var item = await db.Signup.FindAsync(id);
     if (item == null) return Results.NotFound();
 
-    db.InputInfo.Remove(item);
-
+    db.Signup.Remove(item);
     await db.SaveChangesAsync();
 
     return Results.NoContent();
 
 });
-
-app.MapDelete("/api/gallery/{id}", async (SubaContext db, int id) =>
+app.MapDelete("/api/kontakt/{id}", async (StedContext db, int id) =>
 {
-    var item = await db.Gallery.FindAsync(id);
+    var item = await db.Kontakt.FindAsync(id);
     if (item == null) return Results.NotFound();
 
-    File.Delete(builder.Environment.ContentRootPath + @"\wwwroot\" + item.ID);
-    db.Gallery.Remove(item);
+    db.Kontakt.Remove(item);
+    await db.SaveChangesAsync();
 
+    return Results.NoContent();
+
+});
+app.MapDelete("/api/type/{id}", async (StedContext db, int id) =>
+{
+    var item = await db.Type.FindAsync(id);
+    if (item == null) return Results.NotFound();
+
+    db.Type.Remove(item);
     await db.SaveChangesAsync();
 
     return Results.NoContent();
 
 });
 
-// PUT Requests
-app.MapPut("/api/contactinfo/{id}", async (SubaContext db, int id, ContactInfo contactinfo) =>
+//PUT by ID
+app.MapPut("/api/sted/{id}", async (StedContext db, int id, Sted steder) =>
 {
-    if (contactinfo.ID != id) return Results.BadRequest();
+    if (steder.Id != id) return Results.BadRequest();
 
-    db.ContactInfo.Update(contactinfo);
+    db.Steder.Update(steder);
     await db.SaveChangesAsync();
 
     return Results.NoContent();
 });
-
-app.MapPut("/api/tourinfo/{id}", async (SubaContext db, int id, TourInfo tourinfo) =>
+app.MapPut("/api/tur/{id}", async (StedContext db, int id, Tur turer) =>
 {
-    if (tourinfo.ID != id) return Results.BadRequest();
+    if (turer.Id != id) return Results.BadRequest();
 
-    db.TourInfo.Update(tourinfo);
+    db.Turer.Update(turer);
     await db.SaveChangesAsync();
 
     return Results.NoContent();
 });
-
-app.MapPut("/api/inputinfo/{id}", async (SubaContext db, int id, InputInfo inputinfo) =>
+app.MapPut("/api/img/{id}", async (StedContext db, int id, IMG image) =>
 {
-    if (inputinfo.ID != id) return Results.BadRequest();
+    if (image.Id != id) return Results.BadRequest();
 
-    db.InputInfo.Update(inputinfo);
-    await db.SaveChangesAsync();
-
-    return Results.NoContent();
-});
-
-app.MapPut("/api/gallery/{id}", async (SubaContext db, int id, Gallery gallery) =>
-{
-    if (gallery.ID != id) return Results.BadRequest();
-
-    db.Gallery.Update(gallery);
-    await db.SaveChangesAsync();
-
-    return Results.NoContent();
-});
-
-app.MapPut("/api/products/{id}", async (SubaContext db, int id, Products products) =>
-{
-    if (products.ID != id) return Results.BadRequest();
-
-    if (Tools.IsBase64String(products.Image))
+    if (Tools.IsBase64String(image.Image))
     {
-        Products OldProducts = await db.Products.AsNoTracking().SingleOrDefaultAsync(e => e.ID == id);
-        if (!string.IsNullOrEmpty(OldProducts.Image))
+        IMG oldImage = await db.Images.AsNoTracking().SingleOrDefaultAsync(e => e.Id == id);
+        if (!string.IsNullOrEmpty(oldImage.Image))
         {
-            File.Delete(builder.Environment.ContentRootPath + @"\wwwroot\" + OldProducts.Image);
+            File.Delete(builder.Environment.ContentRootPath + @"/wwwroot/" + oldImage.Image);
         }
-
-        products.Image = Tools.ConvertBase64ToFile(products.Image, builder.Environment.ContentRootPath + @"\wwwroot\");
+        image.Image = Tools.ConvertBase64tofile(image.Image, builder.Environment.ContentRootPath + @"/wwwroot/");
     }
-
-    db.Products.Update(products);
+    db.Images.Update(image);
     await db.SaveChangesAsync();
 
     return Results.NoContent();
 });
+app.MapPut("/api/signup/{id}", async (StedContext db, int id, Tilmeld tilmeld) =>
+{
+    if (tilmeld.Id != id) return Results.BadRequest();
 
+    db.Signup.Update(tilmeld);
+    await db.SaveChangesAsync();
+
+    return Results.NoContent();
+});
+app.MapPut("/api/kontakt/{id}", async (StedContext db, int id, Kontakt kontakt) =>
+{
+    if (kontakt.Id != id) return Results.BadRequest();
+
+    db.Kontakt.Update(kontakt);
+    await db.SaveChangesAsync();
+
+    return Results.NoContent();
+});
+app.MapPut("/api/type/{id}", async (StedContext db, int id, Type type) =>
+{
+    if (type.Id != id) return Results.BadRequest();
+
+    db.Type.Update(type);
+    await db.SaveChangesAsync();
+
+    return Results.NoContent();
+});
 app.Run();
