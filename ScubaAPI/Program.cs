@@ -51,20 +51,20 @@ app.MapGet("/", () =>
     return "API working if you see this page =)";
 });
 // GET
-app.MapGet("/api/sted", async (StedContext db) => await db.Steder.Include(e => e.Type).ToListAsync());
-app.MapGet("/api/tur", async (StedContext db) => await db.Turer.Include(e => e.Sted).ToListAsync());
-app.MapGet("/api/img", async (StedContext db) => await db.Images.Include(e => e.Sted).ToListAsync());
-app.MapGet("/api/signup", async (StedContext db) => await db.Signup.Include(e => e.Tur).ToListAsync());
+app.MapGet("/api/sted", async (StedContext db) => await db.Steder.ToListAsync());
+app.MapGet("/api/tur", async (StedContext db) => await db.Turer.ToListAsync());
+app.MapGet("/api/img", async (StedContext db) => await db.Images.ToListAsync());
+app.MapGet("/api/signup", async (StedContext db) => await db.Signup.ToListAsync());
 app.MapGet("/api/kontakt", async (StedContext db) => await db.Kontakt.ToListAsync());
 app.MapGet("/api/type", async (StedContext db) => await db.Type.ToListAsync());
 
 // GET by ID
-app.MapGet("/api/sted/{id}", async (StedContext db, int id) => await db.Steder.Include(e => e.Type).FirstOrDefaultAsync(e => e.Id == id));
+app.MapGet("/api/sted/{id}", async (StedContext db, int id) => await db.Steder.FirstOrDefaultAsync());
 app.MapGet("/api/tur/{id}", async (StedContext db) => await db.Turer.ToListAsync());
 app.MapGet("/api/img/{id}", async (StedContext db) => await db.Steder.ToListAsync());
 app.MapGet("/api/signup/{id}", async (StedContext db) => await db.Steder.ToListAsync());
 app.MapGet("/api/kontakt/{id}", async (StedContext db) => await db.Steder.ToListAsync());
-app.MapGet("/api/type/{id}", async (StedContext db, int id) => await db.Steder.Where(e => e.TypeID == id).ToListAsync());
+app.MapGet("/api/type/{id}", async (StedContext db, int id) => await db.Steder.ToListAsync());
 
 // POST
 app.MapPost("/api/sted", async (StedContext db, Sted steder) =>

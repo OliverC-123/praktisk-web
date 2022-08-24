@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "RsyQeAxi6y2aGxJ1T34JV1eYY1rzOfkqk8QEVtI/c6Jef9IlBAGCqo0nTY6I46uq47wzB+Ofde3TFti84t+HgQ==",
+  "dgSpecHash": "eu4NLut5hMYqAPOROuoL2zeiPSY1BCnFerbyXkbyZbvj/hvuqc4Rz509nCutzS19wrkUCR8H37czS984UzMo2g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\oliv827p\\source\\repos\\Scott\\WebAPI\\ScubaAPI.csproj",
+  "projectFilePath": "C:\\Users\\oliv827p\\source\\praktisk-web\\ScubaAPI\\ScubaAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\oliv827p\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\oliv827p\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.8\\microsoft.entityframeworkcore.6.0.8.nupkg.sha512",
