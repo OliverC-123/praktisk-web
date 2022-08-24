@@ -18,7 +18,7 @@ builder.Host.UseContentRoot(Directory.GetCurrentDirectory());
 // MYSQL
 builder.Services.AddDbContext<SubaContext>(options =>
 {
-    options.UseMySql(builder.Configuration.GetConnectionString("SubaDatabase"),
+    options.UseMySql(builder.Configuration.GetConnectionString("ScubaDatabase"),
     Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.23-mysql"));
 });
 
