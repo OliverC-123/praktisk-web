@@ -4,7 +4,6 @@
     {
         public int Id { get; set; }
         public int TypeID { get; set; }
-        public Type? Type { get; set; }
         public decimal? Lat { get; set; }
         public decimal? Lon { get; set; }
         public string? Navn { get; set; }

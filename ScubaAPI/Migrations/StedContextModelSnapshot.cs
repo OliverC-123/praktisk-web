@@ -39,8 +39,6 @@ namespace ScubaAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("StedID");
-
                     b.ToTable("Images");
                 });
 
@@ -90,8 +88,6 @@ namespace ScubaAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("TypeID");
-
                     b.ToTable("Steder");
                 });
 
@@ -120,8 +116,6 @@ namespace ScubaAPI.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("TurID");
 
                     b.ToTable("Signup");
                 });
@@ -161,8 +155,6 @@ namespace ScubaAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("StedID");
-
                     b.ToTable("Turer");
                 });
 
@@ -178,50 +170,6 @@ namespace ScubaAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Type");
-                });
-
-            modelBuilder.Entity("ScubaAPI.Models.IMG", b =>
-                {
-                    b.HasOne("ScubaAPI.Models.Sted", "Sted")
-                        .WithMany()
-                        .HasForeignKey("StedID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Sted");
-                });
-
-            modelBuilder.Entity("ScubaAPI.Models.Sted", b =>
-                {
-                    b.HasOne("ScubaAPI.Models.Type", "Type")
-                        .WithMany()
-                        .HasForeignKey("TypeID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Type");
-                });
-
-            modelBuilder.Entity("ScubaAPI.Models.Tilmeld", b =>
-                {
-                    b.HasOne("ScubaAPI.Models.Tur", "Tur")
-                        .WithMany()
-                        .HasForeignKey("TurID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Tur");
-                });
-
-            modelBuilder.Entity("ScubaAPI.Models.Tur", b =>
-                {
-                    b.HasOne("ScubaAPI.Models.Sted", "Sted")
-                        .WithMany()
-                        .HasForeignKey("StedID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Sted");
                 });
 #pragma warning restore 612, 618
         }

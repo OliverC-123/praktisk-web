@@ -4,7 +4,6 @@
     {
         public int Id { get; set; }
         public int TurID { get; set; }
-        public Tur? Tur { get; set; }
         public string? Navn { get; set; }
         public string? Mail { get; set; }
         public string? Tlfnr { get; set; }

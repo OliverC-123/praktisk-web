@@ -5,11 +5,31 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ScubaAPI.Migrations
 {
-    public partial class tilDB : Migration
+    public partial class _11 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterDatabase()
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Images",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    StedID = table.Column<int>(type: "int", nullable: false),
+                    Image = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Default = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Cover = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Images", x => x.Id);
+                })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
@@ -32,17 +52,24 @@ namespace ScubaAPI.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "Type",
+                name: "Signup",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    DykType = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
+                    TurID = table.Column<int>(type: "int", nullable: false),
+                    Navn = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Mail = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Tlfnr = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Hojde = table.Column<int>(type: "int", nullable: false),
+                    Vaegt = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Type", x => x.Id);
+                    table.PrimaryKey("PK_Signup", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -65,38 +92,6 @@ namespace ScubaAPI.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Steder", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Steder_Type_TypeID",
-                        column: x => x.TypeID,
-                        principalTable: "Type",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
-                name: "Images",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    StedID = table.Column<int>(type: "int", nullable: false),
-                    Image = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Default = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Cover = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4")
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Images", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Images_Steder_StedID",
-                        column: x => x.StedID,
-                        principalTable: "Steder",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -123,62 +118,23 @@ namespace ScubaAPI.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Turer", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Turer_Steder_StedID",
-                        column: x => x.StedID,
-                        principalTable: "Steder",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "Signup",
+                name: "Type",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    TurID = table.Column<int>(type: "int", nullable: false),
-                    Navn = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Mail = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Tlfnr = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Hojde = table.Column<int>(type: "int", nullable: false),
-                    Vaegt = table.Column<int>(type: "int", nullable: false)
+                    DykType = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Signup", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Signup_Turer_TurID",
-                        column: x => x.TurID,
-                        principalTable: "Turer",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                    table.PrimaryKey("PK_Type", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Images_StedID",
-                table: "Images",
-                column: "StedID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Signup_TurID",
-                table: "Signup",
-                column: "TurID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Steder_TypeID",
-                table: "Steder",
-                column: "TypeID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Turer_StedID",
-                table: "Turer",
-                column: "StedID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -193,10 +149,10 @@ namespace ScubaAPI.Migrations
                 name: "Signup");
 
             migrationBuilder.DropTable(
-                name: "Turer");
+                name: "Steder");
 
             migrationBuilder.DropTable(
-                name: "Steder");
+                name: "Turer");
 
             migrationBuilder.DropTable(
                 name: "Type");

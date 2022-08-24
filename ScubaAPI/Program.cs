@@ -59,12 +59,12 @@ app.MapGet("/api/kontakt", async (StedContext db) => await db.Kontakt.ToListAsyn
 app.MapGet("/api/type", async (StedContext db) => await db.Type.ToListAsync());
 
 // GET by ID
-app.MapGet("/api/sted/{id}", async (StedContext db, int id) => await db.Steder.FirstOrDefaultAsync());
-app.MapGet("/api/tur/{id}", async (StedContext db) => await db.Turer.ToListAsync());
-app.MapGet("/api/img/{id}", async (StedContext db) => await db.Steder.ToListAsync());
-app.MapGet("/api/signup/{id}", async (StedContext db) => await db.Steder.ToListAsync());
-app.MapGet("/api/kontakt/{id}", async (StedContext db) => await db.Steder.ToListAsync());
-app.MapGet("/api/type/{id}", async (StedContext db, int id) => await db.Steder.ToListAsync());
+app.MapGet("/api/sted/{id}", async (StedContext db, int id) => await db.Steder.FindAsync(id));
+app.MapGet("/api/tur/{id}", async (StedContext db, int id) => await db.Turer.FindAsync(id));
+app.MapGet("/api/img/{id}", async (StedContext db, int id) => await db.Images.FindAsync(id));
+app.MapGet("/api/signup/{id}", async (StedContext db, int id) => await db.Signup.FindAsync(id));
+app.MapGet("/api/kontakt/{id}", async (StedContext db, int id) => await db.Kontakt.FindAsync(id));
+app.MapGet("/api/type/{id}", async (StedContext db, int id) => await db.Type.FindAsync(id));
 
 // POST
 app.MapPost("/api/sted", async (StedContext db, Sted steder) =>
